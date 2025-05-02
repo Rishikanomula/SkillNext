@@ -46,6 +46,7 @@ public class AttendanceRegister{
         //     attendanceRegister.add(new Student(rollnumber,name, status));
         // }
 
+        // this to make it dynamic 
         while (true) {
             System.out.print("\nEnter Student's Name (or type 'stop' to finish): ");
             String name = sc.nextLine();
@@ -70,7 +71,8 @@ public class AttendanceRegister{
         // for (Student student : attendanceRegister) {
         //     student.display();
         // }
-        // in tabular format:
+
+        //  to display in tabular format:
         System.out.printf("%-12s %-20s %-10s\n", "Roll No", "Name", "Status");
         System.out.println("---------------------------------------------");
         for (Student student : attendanceRegister) {
