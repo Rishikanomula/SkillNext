@@ -32,6 +32,78 @@ class Solution{
         }
         return ans;
     }
+
+    //To reverse linked-list
+    public ListNode reverseList(ListNode head){
+        ListNode prev = null;
+        ListNode curr = head;
+        while(curr != null){
+            ListNode nextNode = curr.next;
+            curr.next = prev;
+            prev = curr;
+            curr = nextNode;
+        }
+        return prev;
+    }
+
+    //To check if LL is palindrome 
+    public boolean isPalindrome(ListNode head){
+        if(head == null || head.next == null) return true;
+        ListNode slow = head, fast = head;
+        while(fast!= null && fast.next !=null){
+            slow = slow.next;
+            fast = fast.next.next;
+        }
+        ListNode secondHalf = reverseList(slow);
+        ListNode p1 = head;
+        ListNode p2 = secondHalf;
+        boolean isPalin = true;
+        while(p2!=null){
+            if(p1.val != p2.val){
+                isPalin = false;
+                break;
+            }
+            p1=p1.next;
+            p2=p2.next;
+        }
+        return isPalin;
+    }
+// swap nodes in pairs
+    public ListNode swapPairs(ListNode head){
+        if(head!=null || head.next!=null) return head;
+        ListNode dummy = new ListNode(0);
+        dummy.next=head;
+        ListNode curr = head;
+        ListNode prev = dummy;
+        while(curr!=null && curr.next!=null){
+            ListNode first = curr;
+            ListNode sec = curr.next;
+            prev.next=first.next;
+            sec.next=first;
+            prev=first;
+            curr=first.next;
+        }
+        return dummy.next;
+    }
+
+//remove nth node from end
+    public ListNode removeNthfFromEnd(ListNode head, int n){
+        ListNode dum = new ListNode(0);
+        dum.next=head;
+        ListNode f = dum;
+        ListNode s = dum;
+        for(int i=0; i<n; i++){
+            f=f.next;
+        }
+        while(f.next!=null){
+            s=s.next;
+            f=f.next;
+        }
+        s.next = s.next.next;
+        return dum.next;
+    }
+
+    
     public static void main(String[] args){
         Scanner sc = new Scanner(System.in);
         String s = sc.nextLine();
